@@ -13,6 +13,7 @@
     "body-parser": "^1.18.2",
     "express": "^4.16.3",
     "nodemon": "^1.17.3",
+    "request": "^2.85.0",
     "screenshot-desktop": "^1.4.2",
     "shelljs": "^0.8.1",
     "simple-adb": "^1.7.9"
