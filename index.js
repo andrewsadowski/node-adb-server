@@ -21,10 +21,11 @@ app.post("/POST_TEST", (req, res) => {
   var path = req.body.path;
   var cmd = req.body.cmd;
 
-  //   shell.echo(`adb shell takescreen -p ${req.body.path}`);
-  shell.exec(`adb shell`);
-  shell.echo(`done ${path}`);
-  res.send("{'code':20,'description':'done'}");
+  var myExecutionStr = `adb shell screencap -p ${req.body.path}`
+  shell.echo('Executing....')
+  shell.exec(myExecutionStr);
+  shell.echo(`${myExecutionStr} `)
+  res.send("{'code':200,'description':'done'}");
 });
 
 // const adbFunction = sadb.connect("");
