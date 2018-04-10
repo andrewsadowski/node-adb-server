@@ -8,6 +8,9 @@ let app = express();
 
 app.use(bodyParser.json());
 // app.use(bodyParser.urlencoded({ extended: true })); //
+app.get('/json  ', (req, res) => {
+  res.send('GET successful');
+});
 
 app.post("/json", (req, res) => {
   var path = req.body.path;
@@ -16,10 +19,10 @@ app.post("/json", (req, res) => {
   var myExecutionStr = `adb shell screencap -p ${req.body.path}`;
   var a = Date.now();
 
-  shell.echo(`Executing.... ${a}`)
+  shell.echo(`Executing...`)
   shell.exec(myExecutionStr);
   var b = Date.now();
-  shell.echo(`${myExecutionStr} ${b - a}ms elapsed`)
+  shell.echo(`Path: ${req.body.path}, Time Elapsed: ${b - a} ms`)
   res.send(`{'code':200,'description':'done ${b - a}'}`);
 });
 
