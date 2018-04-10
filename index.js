@@ -6,40 +6,31 @@ var bodyParser = require("body-parser");
 let app = express();
 // const sadb = new SimpleADB();
 
-// app.get("/test", (req, res) => {
-//   res.send(logger());
-// });
-
-//   Request path file, cmd (int), description(str)
-
-// cmd(100) === 100 exec(adb_shell takescreenshot -p pathToFile)
-//
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true })); //
+// app.use(bodyParser.urlencoded({ extended: true })); //
 
-app.post("/POST_TEST", (req, res) => {
+app.post("/json", (req, res) => {
   var path = req.body.path;
   var cmd = req.body.cmd;
 
-  var myExecutionStr = `adb shell screencap -p ${req.body.path}`
-  shell.echo('Executing....')
+  var myExecutionStr = `adb shell screencap -p ${req.body.path}`;
+  var a = Date.now();
+
+  shell.echo(`Executing.... ${a}`)
   shell.exec(myExecutionStr);
-  shell.echo(`${myExecutionStr} `)
-  res.send("{'code':200,'description':'done'}");
+  var b = Date.now();
+  shell.echo(`${myExecutionStr} ${b - a}ms elapsed`)
+  res.send(`{'code':200,'description':'done ${b - a}'}`);
 });
 
-// const adbFunction = sadb.connect("");
-
-// const imgPath = "/";
-
-function do_adb_call(req, res, next) {
-  //   return screenshot({ filename: "shot.jpg" }).then(imgPath => {
-  console.log(res);
-  shell.echo(`adb shell takescreen -p ${req.body.path}`);
+// function do_adb_call(req, res, next) {
+//   //   return screenshot({ filename: "shot.jpg" }).then(imgPath => {
+//   console.log(res);
+//   shell.echo(`adb shell takescreen -p ${req.body.path}`);
 
   // imgPath: absolute path to screenshot
   // created in current working directory named shot.png
   //   });
-}
+// }
 
 app.listen(3000, () => console.log("Server Running on port 3000"));
