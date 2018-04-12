@@ -1,5 +1,8 @@
 var request = require("request");
 
+// HTTP POST Request to local server that iterates file name by 1
+// and repeats every 3 seconds
+
 var iii = 0;
 setInterval(function() {
   iii = iii + 1;
