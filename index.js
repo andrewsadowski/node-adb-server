@@ -7,7 +7,7 @@ let app = express();
 app.use(bodyParser.json());
 // app.use(bodyParser.urlencoded({ extended: true })); //
 
-app.get('/json  ', (req, res) => {
+app.get('/json', (req, res) => {
   res.send('GET successful');
 });
 
