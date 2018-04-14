@@ -15,6 +15,9 @@ app.get("/json", (req, res) => {
   res.send("GET successful");
 });
 
+//Accepts an HTTP POST request with a JSON object,
+//Which fires off an adb shell command to take
+//A screencap with the JSON request objects properties
 app.post("/json", (req, res) => {
   var path = req.body.path;
   var cmd = req.body.cmd;
